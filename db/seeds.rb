@@ -20,11 +20,10 @@ require 'random_data'
      body: RandomData.random_paragraph
    ) 
  end
- 
- puts "creating custom post"
-Post.find_or_create_by!(title: "custom post", body: "custom body")
- puts "creating custom comment"
-Comment.find_or_create_by!(post: "custom post", body: "custom comment")
+
+
+unique_post = Post.find_or_create_by(title: "UNIQUE TITLE", body:  "UNIQUE BODY")
+Comment.find_or_create_by(body:  "UNIQUE BODY", post: unique_post)
   
   
  puts "Seed finished"
