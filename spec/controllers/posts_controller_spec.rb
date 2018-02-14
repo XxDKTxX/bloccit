@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'random_data'
 
 RSpec.describe PostsController, type: :controller do
   
@@ -89,6 +90,7 @@ RSpec.describe PostsController, type: :controller do
  
  # #2
      it "assigns post to be updated to @post" do
+       
        get :edit, params: { id: my_post.id }
  
        post_instance = assigns(:post)
