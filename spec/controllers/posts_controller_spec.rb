@@ -76,7 +76,6 @@ RSpec.describe PostsController, type: :controller do
     end
 
    describe "GET edit" do
-     
      it "returns http success" do
        get :edit, params: { id: my_post.id }
        expect(response).to have_http_status(:success)
@@ -90,7 +89,6 @@ RSpec.describe PostsController, type: :controller do
  
  # #2
      it "assigns post to be updated to @post" do
-       
        get :edit, params: { id: my_post.id }
  
        post_instance = assigns(:post)
@@ -100,5 +98,4 @@ RSpec.describe PostsController, type: :controller do
        expect(post_instance.body).to eq my_post.body
      end
    end
-
 end
