@@ -31,6 +31,15 @@ require 'random_data'
    )
  end
  @advertisements = Advertisement.all
+ 
+ # Create Questions
+ 100.times do 
+   Question.create!(
+     title: RandomData.random_sentence,
+     body: RandomData.random_paragraph,
+     resolved: false
+   )
+ end 
 
 
 unique_post = Post.find_or_create_by(title: "UNIQUE TITLE", body:  "UNIQUE BODY")
