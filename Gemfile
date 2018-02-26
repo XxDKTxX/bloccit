@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass'
 
+gem 'shoulda'
+
 
 
 # Use ActiveModel has_secure_password
@@ -39,6 +41,7 @@ gem 'bootstrap-sass'
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  
   
   gem 'pry-rails'
 
