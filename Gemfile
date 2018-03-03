@@ -54,5 +54,10 @@ group :development do
    gem 'rspec-rails', '~> 3.0'
    gem 'rails-controller-testing'
  end
+ 
+group :production do
+  gem uninstall sqlite3
+  gem 'pg'
+end
  end
 
