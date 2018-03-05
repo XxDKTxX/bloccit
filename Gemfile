@@ -27,6 +27,8 @@ gem 'bootstrap-sass'
 
 gem 'shoulda'
 
+gem 'bcrypt'
+
 
 
 # Use ActiveModel has_secure_password
@@ -56,7 +58,6 @@ group :development do
  end
  
 group :production do
-  gem uninstall sqlite3
   gem 'pg'
 end
  end
