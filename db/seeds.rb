@@ -21,9 +21,9 @@ require 'random_data'
 
  # Create Posts
  50.times do
- # #1
+
    Post.create!(
- # #2
+
      user:  users.sample,
      topic: topics.sample,
      title: RandomData.random_sentence,
@@ -32,11 +32,25 @@ require 'random_data'
  end
  posts = Post.all
  
+  50.times do
+
+   SponsoredPost.create!(
+
+     user:  users.sample,
+     topic: topics.sample,
+     title: RandomData.random_sentence,
+     body:  RandomData.random_paragraph
+   )
+ end
+ sponsored_posts = SponsoredPost.all
+ 
+ 
+ 
  # Create Comments
- # #3
+
  100.times do
    Comment.create!(
- # #4
+
      post: posts.sample,
      body: RandomData.random_paragraph
    ) 
@@ -76,6 +90,7 @@ Comment.find_or_create_by(body:  "UNIQUE BODY", post: unique_post)
  puts "#{User.count} users created"
  puts "#{Topic.count} topics created!"
  puts "#{Post.count} posts created"
+ puts "#{SponsoredPost.count} sponsored posts created"
  puts "#{Comment.count} comments created"
  puts "#{Advertisement.count} advertisements created"
  puts "#{Question.count} questions created"
