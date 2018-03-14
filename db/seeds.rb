@@ -11,14 +11,16 @@ require 'random_data'
 
  users = User.all
 
- 15.times do
-   Topic.create!(
-     name:         RandomData.random_sentence,
-     description:  RandomData.random_paragraph
-   )
- end
- topics = Topic.all
 
+ # 15.times do
+ #   Topic.create!(
+ #     name:         RandomData.random_sentence,
+ #     description:  RandomData.random_paragraph
+ #   )
+ # end
+ # topics = Topic.all
+
+ 
  # Create Posts
  50.times do
 
@@ -34,15 +36,15 @@ require 'random_data'
  
   50.times do
 
-   SponsoredPost.create!(
+ #   SponsoredPost.create!(
 
-     user:  users.sample,
-     topic: topics.sample,
-     title: RandomData.random_sentence,
-     body:  RandomData.random_paragraph
-   )
- end
- sponsored_posts = SponsoredPost.all
+ #     user:  users.sample,
+ #     topic: topics.sample,
+ #     title: RandomData.random_sentence,
+ #     body:  RandomData.random_paragraph
+ #   )
+ # end
+ # sponsored_posts = SponsoredPost.all
  
  
  
@@ -80,9 +82,20 @@ require 'random_data'
 unique_post = Post.find_or_create_by(title: "UNIQUE TITLE", body:  "UNIQUE BODY")
 Comment.find_or_create_by(body:  "UNIQUE BODY", post: unique_post)
   
-  user = User.first
- user.update_attributes!(
-   email: 'dkt@bloc.com', 
+
+ 
+  # Create an admin user
+   admin = User.create!(
+   name:     'Admin User',
+   email:    'admin@example.com',
+   password: 'helloworld',
+   role:     'admin'
+ )
+ 
+ # Create a member
+   member = User.create!(
+   name:     'Member User',
+   email:    'member@example.com',
    password: 'helloworld'
  )
   
@@ -94,3 +107,4 @@ Comment.find_or_create_by(body:  "UNIQUE BODY", post: unique_post)
  puts "#{Comment.count} comments created"
  puts "#{Advertisement.count} advertisements created"
  puts "#{Question.count} questions created"
+end

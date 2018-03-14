@@ -3,7 +3,10 @@ class User < ActiveRecord::Base
      has_many :posts, dependent: :destroy
     
      before_save { self.email = email.downcase if email.present? }
+     
      before_save :format_name
+     
+     before_save { self.role ||= :member }
  
 
 
@@ -18,15 +21,16 @@ class User < ActiveRecord::Base
              length: { minimum: 3, maximum: 254 }
 
    has_secure_password
+  
+   enum role: [:member, :admin]
    
    def format_name
      if name
        name_array = []
        name.split.each do |name_part|
          name_array << name_part.capitalize
-       end
-         
-         self.name = name_array.join(" ")
+      end
+        self.name = name_array.join(" ")
      end
    end
 end
