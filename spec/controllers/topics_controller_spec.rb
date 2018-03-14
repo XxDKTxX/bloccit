@@ -239,27 +239,27 @@ RSpec.describe TopicsController, type: :controller do
 
           # NOT REDIRECTING HAVING ISSUES
        
-    # describe "PUT update" do
-    #   it "updates topic with expected attributes" do
-    #     new_name = RandomData.random_sentence
-    #     new_description = RandomData.random_paragraph
-
-    #     put :update,  id: my_topic.id, topic: { name: new_name, description: new_description } 
-
-    #     updated_topic = assigns(:topic)
-    #     expect(updated_topic.id).to eq my_topic.id
-    #     expect(updated_topic.name).to eq new_name
-    #     expect(updated_topic.description).to eq new_description
-    #   end
-
-    #   it "redirects to the updated topic" do
-    #     new_name = RandomData.random_sentence
-    #     new_description = RandomData.random_paragraph
-
-    #     put :update, topic_id: my_topic.id, topic: { name: new_name, description: new_description } 
-    #     expect(response).to redirect_to [my_topic]
-    #   end
-    # end
+describe "PUT update" do
+          it "updates topic with expected attributes" do
+               new_name = RandomData.random_sentence
+               new_description = RandomData.random_paragraph
+               
+               put :update, id: my_topic.id, topic: {name: new_name, description: new_description}
+               
+               updated_topic = assigns(:topic)
+               expect(updated_topic.id).to eq my_topic.id
+                expect(updated_topic.name).to eq new_name
+                expect(updated_topic.description).to eq new_description
+            end
+            
+            it "redirects to the updated topic" do
+               new_name = RandomData.random_sentence
+               new_description = RandomData.random_paragraph
+               
+               put :update, id: my_topic.id, topic: {name: new_name, description: new_description}
+              expect(response).to redirect_to my_topic
+           end
+        end
 
     describe "DELETE destroy" do
       it "deletes the topic" do

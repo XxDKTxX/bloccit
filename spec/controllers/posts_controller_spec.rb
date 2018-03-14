@@ -1,4 +1,4 @@
-cdrequire 'rails_helper'
+require 'rails_helper'
 require 'random_data'
 include SessionsHelper
 
