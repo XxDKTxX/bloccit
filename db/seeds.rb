@@ -2,7 +2,7 @@ require 'random_data'
 
  5.times do
    User.create!(
- # #3
+   
    name:     RandomData.random_name,
    email:    RandomData.random_email,
    password: RandomData.random_sentence
@@ -12,13 +12,13 @@ require 'random_data'
  users = User.all
 
 
- # 15.times do
- #   Topic.create!(
- #     name:         RandomData.random_sentence,
- #     description:  RandomData.random_paragraph
- #   )
- # end
- # topics = Topic.all
+ 15.times do
+   Topic.create!(
+     name:         RandomData.random_sentence,
+     description:  RandomData.random_paragraph
+   )
+ end
+ topics = Topic.all
 
  
  # Create Posts
@@ -52,7 +52,7 @@ require 'random_data'
 
  100.times do
    Comment.create!(
-
+     user: users.sample,
      post: posts.sample,
      body: RandomData.random_paragraph
    ) 
