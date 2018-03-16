@@ -2,9 +2,8 @@ class PostsController < ApplicationController
     
     before_action :require_sign_in, except: :show
     
-    before_action :authorize_user, except: [:show, :new, :create]
-    
-    before_action :mod_check, except: [:edit, :update, :index, :show]
+    before_action :authorize_user, except: [:show, :new, :create] 
+
   
   def index
     @posts = Post.all
@@ -73,15 +72,14 @@ class PostsController < ApplicationController
      post = Post.find(params[:id])
  # #11
      unless current_user == post.user || current_user.admin?
-       flash[:alert] = "You must be an admin to do that."
-       redirect_to [post.topic, post]
+       :mod_check
      end
     end
     
     def mod_check
       if current_user.moderator?
         flash[:alert] = " You do not have permission to do that."
-        redirect_to topics_path
+        redirect_to [post.topic, post]
       end
     end
 end
