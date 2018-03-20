@@ -88,7 +88,11 @@ RSpec.describe PostsController, type: :controller do
       end
     end
 
+<<<<<<< HEAD
    describe "GET edit" do
+=======
+    describe "GET edit" do
+>>>>>>> voting
       it "returns http success" do
         get :edit,  topic_id: my_topic.id, id: my_post.id 
         expect(response).to have_http_status(:success)

@@ -2,7 +2,11 @@ class TopicsController < ApplicationController
     
     before_action :require_sign_in, except: [:index, :show]
     before_action :authorize_user, except: [:index, :show]
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> voting
     
     def index
         @topics = Topic.all
@@ -13,6 +17,8 @@ class TopicsController < ApplicationController
     end
     
     def new
+        mod_block
+        
         @topic = Topic.new
     end
     
@@ -50,7 +56,10 @@ class TopicsController < ApplicationController
     
     def destroy
         mod_block
+<<<<<<< HEAD
         
+=======
+>>>>>>> voting
         @topic = Topic.find(params[:id])
         
         if @topic.destroy
@@ -76,6 +85,10 @@ class TopicsController < ApplicationController
     end
     
     def mod_block
+<<<<<<< HEAD
+=======
+    
+>>>>>>> voting
       if current_user.moderator?
         flash[:alert] = " You do not have permission to do that."
         redirect_to topics_path
