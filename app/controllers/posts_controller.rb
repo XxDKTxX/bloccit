@@ -55,12 +55,7 @@ class PostsController < ApplicationController
     end
     
     def destroy
-<<<<<<< HEAD
-        mod_block
-=======
-       
         
->>>>>>> voting
      @post = Post.find(params[:id])
  
 
@@ -81,27 +76,17 @@ class PostsController < ApplicationController
     def authorize_user
      post = Post.find(params[:id])
 
-<<<<<<< HEAD
-     unless current_user == post.user || current_user.admin? || current_user.moderator?
-       flash[:alert] = "You must be an admin to do that."
-=======
      unless current_user == post.user || current_user.admin?
        flash[:alert] = " You do not have permission to do that."
->>>>>>> voting
        redirect_to [post.topic, post]
      end
     end
     
-<<<<<<< HEAD
+
     def mod_block
       if current_user.moderator?
         flash[:alert] = " You do not have permission to do that."
-        redirect_to [post.topic, post]
-=======
-    def mod_check
-      unless current_user.moderator?
         authorize_user
->>>>>>> voting
       end
     end
 end
