@@ -2,9 +2,10 @@ class PostsController < ApplicationController
     
     before_action :require_sign_in, except: :show
     
+    before_action :mod_check, only: [:new, :create, :delete]
+    
     before_action :authorize_user, except: [:show, :new, :create]
     
-    before_action :mod_check, except: [:edit, :update, :index, :show]
   
   def index
     @posts = Post.all
@@ -15,6 +16,7 @@ class PostsController < ApplicationController
   end
 
   def new
+   
     @topic = Topic.find(params[:topic_id])
     @post = Post.new
   end
@@ -52,9 +54,11 @@ class PostsController < ApplicationController
     end
     
     def destroy
+       
+        
      @post = Post.find(params[:id])
  
- # #8
+
      if @post.destroy
        flash[:notice] = "\"#{@post.title}\" was deleted successfully."
        redirect_to @post.topic
@@ -71,17 +75,16 @@ class PostsController < ApplicationController
    
     def authorize_user
      post = Post.find(params[:id])
- # #11
+
      unless current_user == post.user || current_user.admin?
-       flash[:alert] = "You must be an admin to do that."
+       flash[:alert] = " You do not have permission to do that."
        redirect_to [post.topic, post]
      end
     end
     
     def mod_check
-      if current_user.moderator?
-        flash[:alert] = " You do not have permission to do that."
-        redirect_to topics_path
+      unless current_user.moderator?
+        authorize_user
       end
     end
 end
