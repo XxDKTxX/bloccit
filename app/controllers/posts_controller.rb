@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     
     before_action :require_sign_in, except: :show
     
-    before_action :mod_check, only: [:new, :create, :delete]
+    before_action :mod_block, only: [:new, :create, :delete]
     
     before_action :authorize_user, except: [:show, :new, :create]
     
@@ -22,7 +22,6 @@ class PostsController < ApplicationController
   end
   
   def create
-      mod_block
    
      @topic = Topic.find(params[:topic_id])
      @post = @topic.posts.build(post_params)
@@ -86,7 +85,7 @@ class PostsController < ApplicationController
     def mod_block
       if current_user.moderator?
         flash[:alert] = " You do not have permission to do that."
-        authorize_user
+        redirect_to [post.topic, post]
       end
     end
 end
