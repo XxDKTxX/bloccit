@@ -58,9 +58,9 @@ group :development do
    gem 'rspec-rails', '~> 3.0'
    gem 'rails-controller-testing'
  end
- 
-group :production do
-  gem 'pg'
-end
  end
+ 
+ group :production do
+  gem 'pg', '~> 1.0'
+end
 

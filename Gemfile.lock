@@ -202,7 +202,7 @@ DEPENDENCIES
   figaro (= 1.0)
   jbuilder (~> 2.0)
   jquery-rails
-  pg
+  pg (~> 1.0)
   pry-rails
   rails (= 4.2.5)
   rails-controller-testing
