@@ -24,13 +24,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass'
 
-gem 'pg', '~> 0.18'
+gem 'sqlite3', '~> 1.3', '>= 1.3.11'
 
 gem 'shoulda'
 
 gem 'bcrypt'
 
 gem 'figaro', '1.0'
+
+gem 'factory_girl_rails', '~> 4.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
