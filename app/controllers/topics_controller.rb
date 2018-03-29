@@ -1,12 +1,11 @@
 class TopicsController < ApplicationController
     
     before_action :require_sign_in, except: [:index, :show]
-    before_action :authorize_user, except: [:index, :show]
-<<<<<<< HEAD
     
-=======
+    before_action :mod_block, only: [:create, :destroy]
+    
+    before_action :authorize_user, except: [:index, :show]
 
->>>>>>> voting
     
     def index
         @topics = Topic.all
@@ -17,14 +16,10 @@ class TopicsController < ApplicationController
     end
     
     def new
-        mod_block
-        
         @topic = Topic.new
     end
     
     def create
-        mod_block
-        
         @topic = Topic.new(topic_params)
         
         if @topic.save
@@ -37,10 +32,11 @@ class TopicsController < ApplicationController
     end
     
     def edit
-        @topic = Topic.find(params[:id])
+      @topic = Topic.find(params[:id])
     end
     
     def update
+        
         @topic = Topic.find(params[:id])
         
         @topic.assign_attributes(topic_params)
@@ -55,11 +51,7 @@ class TopicsController < ApplicationController
     end
     
     def destroy
-        mod_block
-<<<<<<< HEAD
         
-=======
->>>>>>> voting
         @topic = Topic.find(params[:id])
         
         if @topic.destroy
@@ -70,6 +62,7 @@ class TopicsController < ApplicationController
             render :show
         end
     end
+    
     
     private
     
@@ -85,14 +78,9 @@ class TopicsController < ApplicationController
     end
     
     def mod_block
-<<<<<<< HEAD
-=======
-    
->>>>>>> voting
-      if current_user.moderator?
+     if current_user.moderator? 
         flash[:alert] = " You do not have permission to do that."
         redirect_to topics_path
-      end
+     end
     end
-    
 end

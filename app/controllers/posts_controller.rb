@@ -2,9 +2,9 @@ class PostsController < ApplicationController
     
     before_action :require_sign_in, except: :show
     
-    before_action :mod_block, only: [:new, :create, :delete]
+    before_action :mod_block, only: [:create, :destroy]
     
-    before_action :authorize_user, except: [:show, :new, :create]
+    before_action :authorize_user, except: [:index, :show]
     
   
   def index
