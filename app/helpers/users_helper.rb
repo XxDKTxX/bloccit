@@ -1,4 +1,5 @@
 module UsersHelper
+   
     def user_posts_if_any(posts)
 		if posts.any?
 			render @user.posts

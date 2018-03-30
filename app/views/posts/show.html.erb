@@ -7,7 +7,7 @@
      </small>
    </h1>
  </div>
- <%= render partial: 'post', locals: { post: post } %>
+ <%= render partial: 'post', locals: { post: @post } %>
    </div>
   <% if user_is_authorized_for_post?(@post) %>
    <div class="col-md-4">
@@ -28,7 +28,7 @@
        </div>
      </h3>
      <% if current_user %>
-       <%= render partial: 'favorites/favorite', locals: { post: @post } %>
+       <%= render partial: 'favorite', locals: { post: @post } %>
      <% end %>
    </div>
  </div>

@@ -2,9 +2,7 @@ require 'random_data'
 
 FactoryGirl.define do
     
-   	factory :comment do
-   		body RandomData.random_sentence
- 		topic
- 		user 
+   	factory :vote do
+       score 1
    	end
 end
